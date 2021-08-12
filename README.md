@@ -1,6 +1,6 @@
 # README
 
--[ ] Doit être une application utilisant Ruby on Rails
+[] Doit être une application utilisant Ruby on Rails  
 -[ ] Utiliser HTML, CSS et bootstrap pour que le design ressemble au vrai Facebook (facultatif, voir ci-dessous pour plus de détails).
 -[ ] Les fonctions d'affichage d'images, de confirmation d'affichage, d'édition, d'affichage de liste, d'écran de détail et de suppression doivent être disponibles (fonction CRUD).
 Doit avoir une fonction de connexion.
