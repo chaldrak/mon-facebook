@@ -6,4 +6,8 @@ module PostsHelper
           post_path
         end
     end
+
+    def get_current_user_post
+      @posts = Post.where(user_id: current_user.id).order(updated_at: :desc)
+    end
 end

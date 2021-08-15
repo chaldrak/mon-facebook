@@ -30,7 +30,7 @@
 						</tr>
 						<tr>
 							<th>INSCRIT</th>
-							<td>depuis <%= current_user.created_at %></td>
+							<td>depuis le <%= current_user.created_at.to_s.to_time.strftime('%e-%m-%Y') %></td>
 						</tr>
 					</table>
                 </div>
@@ -39,11 +39,11 @@
 			<div class="col-sm-9 body-profile">
 				<h3 class="text-center">MES PUBLICATIONS</h3><hr>
                 <div class="row">
-					<% 10.times do %>
+					<% get_current_user_post.each do |post| %>
                     <div class="col-md-6">
-						<div class="panel panel-primary">
+						<div class="panel panel-primary" style="height: 250px; overflow: hidden">
 							<div class="panel-heading">
-							  <h3 class="panel-title">20-11-2021 à 08:54</h3>
+							  <h3 class="panel-title"><%= post.created_at.to_s.to_time.strftime('%e %B %Y à %l:%M') %></h3>
 							  <div class="btn-group" role="group" aria-label="...">
 								<button type="button" class="btn btn-default btn-xs">Show</button>
 								<button type="button" class="btn btn-success btn-xs">Edit</button>
@@ -51,9 +51,9 @@
 							  </div>
 							</div>
 							<div class="panel-body text-center">
-								<img src="/images/maths.jpg" alt="" height="100px">
+								<%= image_tag post.image.url, height: 150, alt: "" if post.image && post.image.url %>
 								<p class="text-justify">
-									Lorem ... <em>(voir la suite)</em>
+									<%= post.content.split(' ').first.capitalize if post.content && post.content.split(' ').first%> ... <em>(voir la suite)</em>
 								</p>
 							</div>
 						</div>
