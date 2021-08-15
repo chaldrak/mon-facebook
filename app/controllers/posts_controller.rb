@@ -10,6 +10,12 @@ class PostsController < ApplicationController
   def show
   end
 
+  def destroy
+    @post.destroy
+    flash[:danger] = "Publication supprimée !!!"
+    redirect_to user_path(current_user.id)
+  end
+
   def confirm
     @post = current_user.posts.build(post_params)
     render "posts/index" if @post.invalid?

@@ -5,38 +5,7 @@
 			<%= content_tag(:div, value, class: "alert alert-#{key} text-center") %>
 		<% end %>
 		<div class="row profile" style="">
-			<div class="col-sm-3" style="">
-				<h2 class="text-center">MON PROFIL</h2>
-				<div class="row text-center">
-					<img class="rounded-circle" src="/images/user.png" alt="user" width="100%">
-                </div>
-                <div class="row line-2">
-					<table class="table table-hover">
-						<tr>
-							<th>NOM</th>
-							<td><%= current_user.name %></td>
-						</tr>
-						<tr>
-							<th>PRENOM</th>
-							<td><%= current_user.surname %></td>
-						</tr>
-                        <tr>
-							<th>SEXE</th>
-							<td><%= current_user.sexe %></td>
-						</tr>
-						<tr>
-							<th>EMAIL</th>
-							<td><%= current_user.email %></td>
-						</tr>
-						<tr>
-							<th>INSCRIT</th>
-							<td>depuis le <%= current_user.created_at.to_s.to_time.strftime('%e-%m-%Y') %></td>
-						</tr>
-					</table>
-					<div class="row text-center"><%= link_to "PUBLIER", posts_path, class: "btn btn-success" %></div>
-                </div>
-
-			</div>
+			<%= render "partials/profil" %>
 			<div class="col-sm-9 body-profile">
 				<h3 class="text-center">MES PUBLICATIONS</h3><hr>
                 <div class="row">
@@ -46,9 +15,9 @@
 							<div class="panel-heading">
 							  <h3 class="panel-title"><%= post.created_at.to_s.to_time.strftime('%e %B %Y à %k:%M') %></h3>
 							  <div class="btn-group" role="group" aria-label="...">
-								<button type="button" class="btn btn-default btn-xs">Show</button>
+								<%= link_to 'Show', post, class: "btn btn-default btn-xs" %>
 								<button type="button" class="btn btn-success btn-xs">Edit</button>
-								<button type="button" class="btn btn-danger btn-xs">Delete</button>
+								<%= link_to 'Delete', post, method: :delete, class: "btn btn-danger btn-xs", data: { confirm: 'Vous êtes sûr de vouloir supprimer cette publication ?' } %>
 							  </div>
 							</div>
 							<div class="panel-body text-center">
@@ -65,3 +34,4 @@
 		</div>
 		<div class="row" style="height: 65px"></div>
 	</div>
+	<%= render "partials/footer" %>

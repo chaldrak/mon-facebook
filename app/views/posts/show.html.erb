@@ -1,1 +1,36 @@
-SHOW
+<%= render "partials/header-sign" %>
+
+<div class="container">
+    <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key} text-center") %>
+    <% end %>
+    <div class="row profile" style="">
+        <%= render "partials/profil" %>
+        <div class="col-sm-9 body-profile">
+            <h3 class="text-center">DETAILS DE LA PUBLICATION</h3><hr>
+            <div class="row text">
+                <div class="col-md-12">
+                    <div class="panel panel-primary" style="min-height:300px; overflow: auto">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Posté le : <%= @post.created_at.to_s.to_time.strftime('%e %B %Y à %k:%M') %></h3>
+                            <h3 class="panel-title">Modifié le : <%= @post.updated_at.to_s.to_time.strftime('%e %B %Y à %k:%M') %></h3>
+                            <div class="btn-group" role="group" aria-label="...">
+                            <%= link_to 'Back', user_path(current_user), class: "btn btn-default btn-xs" %>
+                            <button type="button" class="btn btn-success btn-xs">Edit</button>
+                            </div>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p class="text-justify">
+                                <%= @post.content.capitalize if @post.content %>
+                            </p>
+                            <%= image_tag @post.image.url, height: 200, alt: "" if @post.image && @post.image.url %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 15px"></div>
+    </div>
+    <div class="row" style="height: 65px"></div>
+</div>
+<%= render "partials/footer" %>
