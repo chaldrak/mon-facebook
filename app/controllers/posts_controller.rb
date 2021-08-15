@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :get_all_post, only: %i[ index confirm ]
+  before_action :get_all_post, only: %i[ index create confirm ]
 
   def index
     @post = Post.new

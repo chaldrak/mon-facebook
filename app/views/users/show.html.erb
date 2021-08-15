@@ -33,6 +33,7 @@
 							<td>depuis le <%= current_user.created_at.to_s.to_time.strftime('%e-%m-%Y') %></td>
 						</tr>
 					</table>
+					<div class="row text-center"><%= link_to "PUBLIER", posts_path, class: "btn btn-success" %></div>
                 </div>
 
 			</div>
@@ -43,7 +44,7 @@
                     <div class="col-md-6">
 						<div class="panel panel-primary" style="height: 250px; overflow: hidden">
 							<div class="panel-heading">
-							  <h3 class="panel-title"><%= post.created_at.to_s.to_time.strftime('%e %B %Y à %l:%M') %></h3>
+							  <h3 class="panel-title"><%= post.created_at.to_s.to_time.strftime('%e %B %Y à %k:%M') %></h3>
 							  <div class="btn-group" role="group" aria-label="...">
 								<button type="button" class="btn btn-default btn-xs">Show</button>
 								<button type="button" class="btn btn-success btn-xs">Edit</button>
