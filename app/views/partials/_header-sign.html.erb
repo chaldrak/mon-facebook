@@ -1,8 +1,14 @@
 <nav class="navbar navbar-color">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">facebook</a>
+	      <a class="navbar-brand" href="/posts/index">facebook</a>
 	    </div>
+		<% if logged_in?%>
+		<ul class="nav navbar-nav">
+			<li><a href="/posts/index"><i class="fas fa-home"></i> Accueil</a></li>
+			<li><a href="/users/<%= current_user.id %>"><i class="fas fa-user"></i> Profil</a></li>
+		</ul>
+		<% end %>
 	  	 <ul class="nav navbar-nav navbar-right">
 		  <% if logged_in?%>
 		  	<%= link_to "Déconnexion", session_path(current_user.id), method: :delete, class:"btn btn-danger navbar-btn"%>

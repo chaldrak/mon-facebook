@@ -1,32 +1,36 @@
 <%= render "partials/header-sign" %>
 
 <div class="container">
-		<div class="row text-center">
-			<p class="alert alert-success">Compte créé avec succès. Bienvenue sur <em>facebook clone</em></p>
-		</div>
-		<div class="row profile">
-			<div class="col-sm-3">
+        <% flash.each do |key, value| %>
+			<%= content_tag(:div, value, class: "alert alert-#{key} text-center") %>
+		<% end %>
+		<div class="row profile" style="">
+			<div class="col-sm-3" style="">
 				<h2 class="text-center">MON PROFIL</h2>
 				<div class="row text-center">
-					<img class="rounded-circle" src="images/user.png" alt="user" width="100%">
+					<img class="rounded-circle" src="/images/user.png" alt="user" width="100%">
                 </div>
                 <div class="row line-2">
 					<table class="table table-hover">
 						<tr>
 							<th>NOM</th>
-							<td>DOSSOU</td>
+							<td><%= current_user.name %></td>
 						</tr>
 						<tr>
 							<th>PRENOM</th>
-							<td>Jean</td>
+							<td><%= current_user.surname %></td>
+						</tr>
+                        <tr>
+							<th>SEXE</th>
+							<td><%= current_user.sexe %></td>
 						</tr>
 						<tr>
 							<th>EMAIL</th>
-							<td>jean@gmail.com</td>
+							<td><%= current_user.email %></td>
 						</tr>
 						<tr>
 							<th>INSCRIT</th>
-							<td>depuis Août 2021</td>
+							<td>depuis <%= current_user.created_at %></td>
 						</tr>
 					</table>
                 </div>
@@ -35,7 +39,8 @@
 			<div class="col-sm-9 body-profile">
 				<h3 class="text-center">MES PUBLICATIONS</h3><hr>
                 <div class="row">
-					<div class="col-md-6">
+					<% 10.times do %>
+                    <div class="col-md-6">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 							  <h3 class="panel-title">20-11-2021 à 08:54</h3>
@@ -46,13 +51,14 @@
 							  </div>
 							</div>
 							<div class="panel-body text-center">
-								<img src="images/maths.jpg" alt="" height="100px">
+								<img src="/images/maths.jpg" alt="" height="100px">
 								<p class="text-justify">
 									Lorem ... <em>(voir la suite)</em>
 								</p>
 							</div>
 						</div>
 					</div>
+                    <% end %>
 				</div>
 			</div>
 		</div>
