@@ -10,6 +10,18 @@ class PostsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      flash[:info] = "Publication modifiée avec succès !!!"
+      redirect_to user_path(current_user)
+    else
+      render "edit"
+    end
+  end
+
   def destroy
     @post.destroy
     flash[:danger] = "Publication supprimée !!!"
@@ -28,7 +40,7 @@ class PostsController < ApplicationController
     else
       if @post.save
         redirect_to user_path(current_user.id)
-        flash[:success] = "Publication envoyée"
+        flash[:success] = "Publication enrégistrée !!!"
       else
         render :index
       end
