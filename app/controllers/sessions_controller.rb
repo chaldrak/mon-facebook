@@ -2,11 +2,12 @@ class SessionsController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   
   def new
+    redirect_to user_path(current_user) if current_user
   end
 
   def destroy
     session.delete(:user_id)
-    flash[:info] = "Déconnecté"
+    flash[:danger] = "Déconnecté"
     redirect_to new_session_path
   end
 

@@ -4,11 +4,22 @@
         <% flash.each do |key, value| %>
 			<%= content_tag(:div, value, class: "alert alert-#{key} text-center") %>
 		<% end %>
-		<div class="row profile" style="">
+		<div class="row profile">
 			<%= render "partials/profil" %>
 			<div class="col-sm-9 body-profile">
-				<h3 class="text-center">MES PUBLICATIONS</h3><hr>
+				<h3 class="text-center">
+					MES PUBLICATIONS 
+					<span class="label label-primary">
+						<%= get_current_user_post.size %>
+					</span>
+				</h3>
+				<hr>
                 <div class="row">
+					<% if get_current_user_post.size == 0 %>
+					<div class="alert alert-info text-center">
+						<p>Aucune publication trouvée...</p>
+					</div>
+					<% end %>
 					<% get_current_user_post.each do |post| %>
                     <div class="col-md-6">
 						<div class="panel panel-primary" style="height: 250px; overflow: hidden">

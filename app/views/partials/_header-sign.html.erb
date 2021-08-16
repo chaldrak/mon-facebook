@@ -11,7 +11,8 @@
 		<% end %>
 	  	 <ul class="nav navbar-nav navbar-right">
 		  <% if logged_in?%>
-		  	<%= link_to "Déconnexion", session_path(current_user.id), method: :delete, class:"btn btn-danger navbar-btn", data: { confirm: 'Au revoir et à la prochaine !!!' } %>
+		  	<span class="badge"><%= current_user.name.first + current_user.surname.first %></span>
+		  	<%= link_to "Déconnexion", session_path(current_user.id), method: :delete, class:"btn btn-danger navbar-btn btn-xs", data: { confirm: 'Au revoir et à la prochaine !!!' } %>
 		  <% else %>
 			  	<button onclick="location.href='/sessions/new';" class="btn btn-default navbar-btn">Connexion</button>
 	      		<button onclick="location.href='/users/new';" class="btn btn-success navbar-btn">Inscription</button>

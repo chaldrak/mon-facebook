@@ -7,8 +7,19 @@
                 <%= render "partials/form" %>
 			</div>
 			<div class="col-sm-9 body-profile">
-				<h3 class="text-center">LISTE DES PUBLICATIONS</h3><hr>
+				<h3 class="text-center">
+					LISTE DES PUBLICATIONS 
+					<span class="label label-primary">
+						<%= @posts.size %>
+					</span>
+				</h3>
+				<hr>
                 <div class="row">
+					<% if @posts.size == 0 %>
+					<div class="alert alert-info text-center">
+						<p>Aucune publication trouvée...</p>
+					</div>
+					<% end %>
 					<% @posts.each do |post| %>
 					<div class="col-md-6">
 						<div class="panel panel-primary" style="height: 300px; overflow: hidden">
@@ -18,7 +29,7 @@
 							</div>
 							<div class="panel-body text-center">
                                 <p class="text-justify">
-									<%= post.content %>
+									<%= post.content.capitalize %>
 								</p>
 								<%= image_tag post.image.url, height: 150, alt: "" if post.image && post.image.url %>
 							</div>

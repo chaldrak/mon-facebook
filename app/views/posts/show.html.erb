@@ -21,7 +21,7 @@
                         </div>
                         <div class="panel-body text-center">
                             <p class="text-justify">
-                                <%= @post.content.capitalize if @post.content %>
+                                <%= @post.content.capitalize %>
                             </p>
                             <%= image_tag @post.image.url, height: 200, alt: "" if @post.image && @post.image.url %>
                         </div>
